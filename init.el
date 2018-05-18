@@ -23,4 +23,4 @@
 ;; Edit by hands
 (add-to-list 'default-frame-alist '(width . 180))
 (add-to-list 'default-frame-alist '(height . 35))
-(add-to-list 'default-frame-alist '(font . "M+ 1mn-14"))
+(add-to-list 'default-frame-alist '(font . "M+ 1mn"))
