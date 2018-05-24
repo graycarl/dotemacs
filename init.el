@@ -11,9 +11,11 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(icomplete-mode t)
+ '(indent-tabs-mode nil)
  '(menu-bar-mode nil)
  '(package-selected-packages (quote (python)))
  '(scroll-bar-mode nil)
+ '(tab-width 4)
  '(tool-bar-mode nil)
  '(xterm-mouse-mode t))
 (custom-set-faces
