@@ -18,7 +18,6 @@
 (when (memq window-system '(mac ns x)) (exec-path-from-shell-initialize))
 
 ;; Setup GUI
-;; TODO: Do not hide menu bar in terminal-mode.
 (unless (display-graphic-p)
   (menu-bar-mode -1))
 (when (fboundp 'tool-bar-mode)
