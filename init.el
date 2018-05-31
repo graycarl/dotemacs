@@ -12,7 +12,7 @@
 ;; Selected Package List
 (setq package-selected-packages
       (quote (markdown-mode helm material-theme python
-              exec-path-from-shell)))
+              exec-path-from-shell smex)))
 
 ;; Setup PATH or `/usr/local/bin` will missed in PATH
 (when (memq window-system '(mac ns x)) (exec-path-from-shell-initialize))
@@ -26,6 +26,17 @@
   (scroll-bar-mode -1))
 (when (fboundp 'horizontal-scroll-bar-mode)
   (horizontal-scroll-bar-mode -1))
+
+;; Setup Completion
+(ido-mode t)
+(setq ido-enable-flex-matching t)
+(if (fboundp 'smex)
+  (progn
+    (global-set-key (kbd "M-x") 'smex)
+    (global-set-key (kbd "M-X") 'smex-major-mode-commands)
+    ;; This is your old M-x.
+    (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)))
+
 ;; Optimize some shotcuts
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
@@ -37,7 +48,6 @@
 (setq require-final-newline t)
 (setq visible-bell t)
 
-(icomplete-mode t)
 (setq inhibit-startup-screen t)
 (setq tab-width 4)
 (xterm-mouse-mode t)
