@@ -12,7 +12,7 @@
 ;; Selected Package List
 (setq package-selected-packages
       (quote (markdown-mode helm material-theme python
-              exec-path-from-shell smex)))
+              exec-path-from-shell smex projectile)))
 
 ;; Setup PATH or `/usr/local/bin` will missed in PATH
 (when (memq window-system '(mac ns x)) (exec-path-from-shell-initialize))
@@ -53,6 +53,10 @@
 (xterm-mouse-mode t)
 (add-to-list 'default-frame-alist '(width . 180))
 (add-to-list 'default-frame-alist '(height . 35))
+
+;; Project Management
+(if (fboundp 'projectile-mode)
+  (projectile-mode))
 
 ;; Start server client
 (require 'server)
