@@ -1,18 +1,17 @@
-;; Add custom package archives
+;; Package Archive Setup
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.org/packages/") t)
-
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
 (package-initialize)
 
-;; Selected Package List
 (setq package-selected-packages
-      (quote (markdown-mode helm material-theme python
-              exec-path-from-shell smex projectile)))
+      (quote (markdown-mode helm python
+              exec-path-from-shell smex projectile
+              material-theme leuven-theme solarized-theme zenburn-theme
+              evil evil-collection)))
+(unless package-archive-contents
+  (package-refresh-contents))
+(package-install-selected-packages)
 
 ;; Setup PATH or `/usr/local/bin` will missed in PATH
 (when (memq window-system '(mac ns x)) (exec-path-from-shell-initialize))
@@ -62,6 +61,12 @@
 (require 'server)
 (unless (server-running-p) (server-start))
 (setenv "EDITOR" "emacsclient")
+
+;; Evil Mode
+(setq evil-want-integration nil)
+(evil-mode t)
+(evil-collection-init)
+(evil-global-set-key 'insert (kbd "C-c") 'evil-normal-state)
 
 ;; Local config file
 (setq custom-file (expand-file-name "local.el" user-emacs-directory))
