@@ -26,7 +26,7 @@
 (when (fboundp 'horizontal-scroll-bar-mode)
   (horizontal-scroll-bar-mode -1))
 
-;; Setup Completion
+;; Setup ido and smex
 (ido-mode t)
 (setq ido-enable-flex-matching t)
 (if (fboundp 'smex)
@@ -45,13 +45,10 @@
 
 (setq-default indent-tabs-mode nil)
 (setq require-final-newline t)
-(setq visible-bell t)
 
 (setq inhibit-startup-screen t)
 (setq tab-width 4)
 (xterm-mouse-mode t)
-(add-to-list 'default-frame-alist '(width . 180))
-(add-to-list 'default-frame-alist '(height . 35))
 
 ;; Project Management
 (if (fboundp 'projectile-mode)
@@ -66,7 +63,10 @@
 (setq evil-want-integration nil)
 (evil-mode t)
 (evil-collection-init)
+;; Emulate Vim Ctrl-C
 (evil-global-set-key 'insert (kbd "C-c") 'evil-normal-state)
+;; Emulate Vim Ctrl-P
+(evil-global-set-key 'normal (kbd "C-p") 'projectile-find-file)
 
 ;; Local config file
 (setq custom-file (expand-file-name "local.el" user-emacs-directory))
