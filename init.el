@@ -1,12 +1,13 @@
 ;; Package Archive Setup
 (require 'package)
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.org/packages/") t)
-;; (unless package-archive-contents (package-refresh-contents))
+(setq package-archives '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+                         ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
 (package-initialize)
 
 ;; Install use-package
-(unless (fboundp 'use-package) (package-install 'use-package))
+(unless (fboundp 'use-package) 
+  (package-refresh-contents)
+  (package-install 'use-package))
 
 ;; Setup GUI
 (unless (display-graphic-p)
