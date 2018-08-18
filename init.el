@@ -1,88 +1,28 @@
+(eval-when-compile (require 'cl))
 ;; Package Archive Setup
-(require 'package)
+(setq package-enable-at-startup nil)
+(package-initialize)
 (add-to-list 'package-archives
              '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-;; (setq package-archives '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-;;                          ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
-(package-initialize)
+(setq package-archives '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+                         ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
 
-;; Install use-package
-(unless (fboundp 'use-package) 
-  (package-refresh-contents)
-  (package-install 'use-package))
+;; Load time
+(lexical-let ((emacs-start-time (current-time)))
+  (add-hook 'emacs-startup-hook
+            (lambda ()
+              (let ((elapsed (float-time (time-subtract (current-time) emacs-start-time))))
+                (message "[Emacs initialized in %.3fs]" elapsed)))))
 
-;; Setup GUI
-(unless (display-graphic-p)
-  (menu-bar-mode -1))
-(when (fboundp 'tool-bar-mode)
-  (tool-bar-mode -1))
-(when (fboundp 'scroll-bar-mode)
-  (scroll-bar-mode -1))
-(when (fboundp 'horizontal-scroll-bar-mode)
-  (horizontal-scroll-bar-mode -1))
+;; Load core library
+(load (concat user-emacs-directory "lib"))
+(cl-loop for file in (reverse (directory-files-recursively (concat user-emacs-directory "config/") "\\.el$"))
+       do (condition-case ex
+	      (load (file-name-sans-extension file))
+	    ('error (with-current-buffer "*scratch*"
+		      (insert (format "[INIT ERROR]\n%s\n%s\n\n" file ex))))))
 
-;; Optimize some shotcuts
-(global-set-key (kbd "C-x C-b") 'ibuffer)
-(global-set-key (kbd "C-s") 'isearch-forward-regexp)
-(global-set-key (kbd "C-r") 'isearch-backward-regexp)
-(global-set-key (kbd "C-M-s") 'isearch-forward)
-(global-set-key (kbd "C-M-r") 'isearch-backward)
-
-;; Start server client
-(require 'server)
-(unless (server-running-p) (server-start))
-(setenv "EDITOR" "emacsclient")
-
-;; Some basic editing settings
-(setq-default indent-tabs-mode nil)
-(setq require-final-newline t)
-(setq inhibit-startup-screen t)
-(setq tab-width 4)
-(xterm-mouse-mode t)
-;; Setup ido
-(ido-mode t)
-(setq ido-enable-flex-matching t)
-
-;; Packages
-(use-package markdown-mode :ensure t)
-(use-package python :ensure t)
-(use-package exec-path-from-shell
-  :ensure t
-  :config
-  (when (memq window-system '(mac ns x)) (exec-path-from-shell-initialize)))
-(use-package smex
-  :ensure t
-  :config
-  (global-set-key (kbd "M-x") 'smex)
-  (global-set-key (kbd "M-X") 'smex-major-mode-commands)
-  ;; This is your old M-x.
-  (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command))
-(use-package projectile
-  :ensure t
-  :config
-  (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
-  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-  (setq projectile-globally-ignored-files
-        (append '(".pyc"
-                  "okok"
-                  "~")
-                projectile-globally-ignored-files))
-  (projectile-mode +1))
-(use-package evil
-  :ensure t
-  :init
-  (setq evil-want-integration nil)
-  :config
-  (evil-mode t)
-  ;; Emulate Vim Ctrl-C
-  (evil-global-set-key 'insert (kbd "C-c") 'evil-normal-state)
-  ;; Emulate Vim Ctrl-P
-  (evil-global-set-key 'normal (kbd "C-p") 'projectile-find-file))
-(use-package evil-collection
-  :ensure t
-  :config
-  (evil-collection-init))
 
 ;; Local config file
-(setq custom-file (expand-file-name "local.el" user-emacs-directory))
+(setq custom-file (concat user-emacs-directory "local.el"))
 (when (file-exists-p custom-file) (load custom-file))
