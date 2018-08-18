@@ -4,6 +4,7 @@
 (package-initialize)
 (add-to-list 'package-archives
              '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+;; Package archives in China
 (setq package-archives '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
                          ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
 
@@ -14,7 +15,7 @@
               (let ((elapsed (float-time (time-subtract (current-time) emacs-start-time))))
                 (message "[Emacs initialized in %.3fs]" elapsed)))))
 
-;; Load core library
+;; Load core library and config module
 (load (concat user-emacs-directory "lib"))
 (cl-loop for file in (reverse (directory-files-recursively (concat user-emacs-directory "config/") "\\.el$"))
        do (condition-case ex

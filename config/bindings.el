@@ -6,7 +6,7 @@
 (global-set-key (kbd "C-M-r") 'isearch-backward)
 
 ;; Smex
-(after 'smex
+(after "smex-autoloads"
   (global-set-key (kbd "M-x") 'smex)
   (global-set-key (kbd "M-X") 'smex-major-mode-commands)
   ;; This is your old M-x.
