@@ -11,4 +11,7 @@
   (require-package 'ido-vertical-mode)
   (ido-vertical-mode))
 
+(ido-mode t)
+(ido-everywhere t)
+
 (provide 'config-ido)
