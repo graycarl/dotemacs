@@ -20,9 +20,4 @@
 (setq tab-width 4)
 (xterm-mouse-mode t)
 
-;; better scrolling
-(setq scroll-conservatively 9999
-      scroll-preserve-screen-position t
-      scroll-margin 3)
-
 (provide 'config-core)
