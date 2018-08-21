@@ -37,8 +37,13 @@
   ;; Evil org
   (require 'evil-org)
   (add-hook 'org-mode-hook 'evil-org-mode)
-  (evil-org-set-key-theme '(navigation insert textobjects additional calendar todo))
+  (evil-org-set-key-theme '(navigation insert textobjects additional calendar))
   (require 'evil-org-agenda)
   (evil-org-agenda-set-keys)
+
+  ;; Visual line mode
+  ;; 结果发现中文的确不太适合自动去 Breakline，最好使用手动用 M-q 来自动换行。
+  ;; (add-hook 'org-mode-hook 'visual-line-mode)
+  (add-hook 'org-mode-hook (lambda () (setq fill-column 80)))
 
   (setq org-completion-use-ido t))

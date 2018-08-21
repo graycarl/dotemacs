@@ -33,6 +33,8 @@
   (evil-global-set-key 'normal (kbd "\\gg")
                        (lambda ()
                          (interactive)
-                         (ido-find-file-in-dir org-directory))))
+                         (ido-find-file-in-dir org-directory)))
+  (evil-global-set-key 'normal (kbd "\\ga") 'org-agenda-list)
+  (evil-global-set-key 'normal (kbd "C-SPC") 'org-toggle-checkbox))
 
 (provide 'config-bindings)
