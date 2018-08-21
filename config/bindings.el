@@ -20,6 +20,13 @@
 ;; Evil
 ;; Most evil bindings are configured by evil-collection
 (after 'evil
+  ;; Toggle fullscreen mode
+  (evil-global-set-key 'normal (kbd "\\f") 'toggle-frame-fullscreen)
+  ;; Do not work here
+  ;; (evil-global-set-key 'normal (kbd "\\p")
+  ;;                      (lambda ()
+  ;;                        (interactive)
+  ;;                        (evil-paste-from-register "+")))
   ;; Emulate Vim Ctrl-C
   (evil-global-set-key 'insert (kbd "C-c") 'evil-normal-state))
 (after [evil projectile]
@@ -35,6 +42,8 @@
                          (interactive)
                          (ido-find-file-in-dir org-directory)))
   (evil-global-set-key 'normal (kbd "\\ga") 'org-agenda-list)
+  (evil-global-set-key 'normal (kbd "\\gb") 'org-switchb)
+  
   (evil-global-set-key 'normal (kbd "C-SPC") 'org-toggle-checkbox))
 
 (provide 'config-bindings)
