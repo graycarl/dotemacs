@@ -34,4 +34,14 @@ FEATURE may be any one of:
    (t
     `(with-eval-after-load ,feature ,@body))))
 
+;; Improve hs-minor-mode
+;; 这个还有点问题，当 Cursor 在例如 `def` 这样的关键词上是，没法自动展开，必须是
+;; Cursor 在方法名称上才可用。
+(defun hs-toggle-hiding-one-level ()
+  (interactive)
+  (hs-life-goes-on
+   (if (hs-already-hidden-p)
+        (save-excursion (hs-hide-level-recursive 1 (point-min) (point-max)))
+        (hs-hide-block))))
+
 (provide 'dotemacs-lib)

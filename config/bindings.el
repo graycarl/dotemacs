@@ -27,8 +27,13 @@
   ;;                      (lambda ()
   ;;                        (interactive)
   ;;                        (evil-paste-from-register "+")))
+  ;; Use space to toggle fold like my vimrc
+  (evil-global-set-key 'normal (kbd "SPC") 'hs-toggle-hiding-one-level)
+  (evil-global-set-key 'normal (kbd "zA") 'evil-toggle-fold)
+  (evil-global-set-key 'normal (kbd "za") 'hs-toggle-hiding-one-level)
   ;; Emulate Vim Ctrl-C
   (evil-global-set-key 'insert (kbd "C-c") 'evil-normal-state))
+
 (after [evil projectile]
   ;; Emulate Vim Ctrl-P
   (evil-global-set-key 'normal (kbd "C-p") 'projectile-find-file))

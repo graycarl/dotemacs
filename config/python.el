@@ -4,6 +4,7 @@
 (require-package 'anaconda-mode)
 (add-hook 'python-mode-hook 'anaconda-mode)
 (add-hook 'python-mode-hook 'company-mode)
+(add-hook 'python-mode-hook 'hs-minor-mode)
 
 (require-package 'company)
 (require-package 'company-anaconda)
