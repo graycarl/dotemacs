@@ -16,6 +16,9 @@
 (after "projectile-autoloads"
   (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
+;; Bind F10 to global search
+(after [projectile evil]
+  (evil-global-set-key 'normal (kbd "<f10>") 'projectile-grep))
 
 ;; Evil
 ;; Most evil bindings are configured by evil-collection
@@ -50,5 +53,12 @@
   (evil-global-set-key 'normal (kbd "\\ob") 'org-switchb)
   
   (evil-global-set-key 'normal (kbd "C-SPC") 'org-toggle-checkbox))
+
+;; Quick open *scratch*
+(after 'evil
+  (evil-global-set-key 'normal (kbd "\\s")
+                       (lambda ()
+                         (interactive)
+                         (switch-to-buffer "*scratch*"))))
 
 (provide 'config-bindings)

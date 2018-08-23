@@ -46,4 +46,7 @@
   ;; (add-hook 'org-mode-hook 'visual-line-mode)
   (add-hook 'org-mode-hook (lambda () (setq fill-column 80)))
 
+  ;; Ignore planned tasks in global task list
+  (setq org-agenda-todo-ignore-scheduled t)
+
   (setq org-completion-use-ido t))

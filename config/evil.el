@@ -13,7 +13,7 @@
   (defalias #'forward-evil-word #'forward-evil-symbol)
 
   ;; Do not use clipboard when normal cut
-  (setq select-enable-clipboard nil)
+  ;; (setq select-enable-clipboard nil)
   )
 
 (evil-mode t)
