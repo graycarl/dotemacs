@@ -6,6 +6,11 @@
 (add-hook 'python-mode-hook 'company-mode)
 (add-hook 'python-mode-hook 'hs-minor-mode)
 
+(add-hook 'python-mode-hook
+          (lambda ()
+            (flycheck-mode 1)
+            (setq flycheck-checker 'python-flake8
+                  flycheck-checker-error-threshold 900)))
 (require-package 'company)
 (require-package 'company-anaconda)
 (after 'company

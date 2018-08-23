@@ -42,12 +42,12 @@
 ;; Most evil key bindings for org mode is done by evil-org-mode
 (after 'evil
   ;; Quick open org file
-  (evil-global-set-key 'normal (kbd "\\gg")
+  (evil-global-set-key 'normal (kbd "\\oo")
                        (lambda ()
                          (interactive)
                          (ido-find-file-in-dir org-directory)))
-  (evil-global-set-key 'normal (kbd "\\ga") 'org-agenda-list)
-  (evil-global-set-key 'normal (kbd "\\gb") 'org-switchb)
+  (evil-global-set-key 'normal (kbd "\\oa") 'org-agenda-list)
+  (evil-global-set-key 'normal (kbd "\\ob") 'org-switchb)
   
   (evil-global-set-key 'normal (kbd "C-SPC") 'org-toggle-checkbox))
 
