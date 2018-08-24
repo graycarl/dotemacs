@@ -16,6 +16,7 @@
 (after "projectile-autoloads"
   (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
+
 ;; Bind F10 to global search
 (after [projectile evil]
   (evil-global-set-key 'normal (kbd "<f10>") 'projectile-grep))
@@ -37,12 +38,17 @@
   ;; Emulate Vim Ctrl-P
   (evil-global-set-key 'normal (kbd "C-p") 'projectile-find-file))
 
-;; Keys for folding
+;; Key bindings for folding
 (after [evil hideshow]
   ;; Use space to toggle fold like my vimrc
   (evil-global-set-key 'normal (kbd "SPC") 'hs-toggle-hiding-one-level)
   (evil-global-set-key 'normal (kbd "zA") 'evil-toggle-fold)
   (evil-global-set-key 'normal (kbd "za") 'hs-toggle-hiding-one-level))
+
+;; ido key bindings like vim ctrl-p
+(after [evil ido]
+  (define-key ido-common-completion-map "\C-j" 'ido-next-match)
+  (define-key ido-common-completion-map "\C-k" 'ido-prev-match))
 
 ;; Org mode
 ;; Most evil key bindings for org mode is done by evil-org-mode
