@@ -49,4 +49,11 @@
   ;; Ignore planned tasks in global task list
   (setq org-agenda-todo-ignore-scheduled t)
 
-  (setq org-completion-use-ido t))
+  ;; Optimize Sparsetrees when navigated from agenda view
+  (setq org-show-context-detail '((agenda . tree)
+                                  (bookmark-jump . lineage)
+                                  (isearch . lineage)
+                                  (default . ancestors)))
+
+  (setq org-completion-use-ido t)
+)
