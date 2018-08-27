@@ -44,4 +44,16 @@ FEATURE may be any one of:
         (save-excursion (hs-hide-level-recursive 1 (point-min) (point-max)))
         (hs-hide-block))))
 
+;; Fancy Tab
+;; See: https://www.emacswiki.org/emacs/TabCompletion
+(defun fancy-tab (arg)
+  (interactive "P")
+  (setq this-command last-command)
+  (if (or (eq this-command 'hippie-expand) (looking-at "\\_>"))
+      (progn
+	(setq this-command 'hippie-expand)
+	(hippie-expand arg))
+    (setq this-command 'indent-for-tab-command)
+    (indent-for-tab-command arg)))
+
 (provide 'dotemacs-lib)

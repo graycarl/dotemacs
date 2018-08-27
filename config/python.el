@@ -9,6 +9,8 @@
 (add-hook 'python-mode-hook
           (lambda ()
             (flycheck-mode 1)
+            ;; Tab Completion
+            (local-set-key (kbd "TAB") 'fancy-tab)
             (setq flycheck-checker 'python-flake8
                   flycheck-checker-error-threshold 900)))
 (require-package 'company)

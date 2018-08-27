@@ -23,7 +23,6 @@
 	    ('error (with-current-buffer "*scratch*"
 		      (insert (format "[INIT ERROR]\n%s\n%s\n\n" file ex))))))
 
-
 ;; Local config file
 (setq custom-file (concat user-emacs-directory "local.el"))
 (when (file-exists-p custom-file) (load custom-file))
