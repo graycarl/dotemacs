@@ -55,5 +55,15 @@ FEATURE may be any one of:
 	(hippie-expand arg))
     (setq this-command 'indent-for-tab-command)
     (indent-for-tab-command arg)))
+;; Remove expand list & line
+(setq hippie-expand-try-functions-list
+      '(try-complete-file-name-partially
+        try-complete-file-name
+        try-expand-all-abbrevs
+        try-expand-dabbrev
+        try-expand-dabbrev-all-buffers
+        try-expand-dabbrev-from-kill
+        try-complete-lisp-symbol-partially
+        try-complete-lisp-symbol))
 
 (provide 'dotemacs-lib)
