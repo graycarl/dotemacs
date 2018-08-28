@@ -40,10 +40,11 @@
 
 ;; Key bindings for folding
 (after [evil hideshow]
-  ;; Use space to toggle fold like my vimrc
+  ;; Use space to toggle folding
   (evil-global-set-key 'normal (kbd "SPC") 'hs-toggle-hiding-one-level)
   (evil-global-set-key 'normal (kbd "zA") 'evil-toggle-fold)
   (evil-global-set-key 'normal (kbd "za") 'hs-toggle-hiding-one-level))
+  
 
 ;; ido key bindings like vim ctrl-p
 (after [evil ido]

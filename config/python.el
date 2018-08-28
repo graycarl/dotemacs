@@ -11,6 +11,8 @@
             (flycheck-mode 1)
             ;; Tab Completion
             (local-set-key (kbd "TAB") 'fancy-tab)
+            ;; Next Error
+            (local-set-key (kbd "<f8>") 'next-error)
             (setq flycheck-checker 'python-flake8
                   flycheck-checker-error-threshold 900)))
 (require-package 'company)
