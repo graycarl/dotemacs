@@ -24,6 +24,7 @@
 
   (setq org-agenda-files `(,org-directory))
 
+  ;; Need to be fixed
   (setq org-capture-templates
         '(("t" "Todo" entry (file+headline (expand-file-name dotemacs-org/inbox-file) "INBOX")
            "* TODO %?\n%U\n%a\n")

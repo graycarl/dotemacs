@@ -17,7 +17,9 @@
 
 ;; Load core library and config module
 (load (concat user-emacs-directory "lib"))
-(cl-loop for file in (reverse (directory-files-recursively (concat user-emacs-directory "config/") "\\.el$"))
+(cl-loop for file in (reverse
+                      (directory-files-recursively
+                       (concat user-emacs-directory "config/") "\\.el$"))
        do (condition-case ex
 	      (load (file-name-sans-extension file))
 	    ('error (with-current-buffer "*scratch*"
