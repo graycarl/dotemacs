@@ -1,6 +1,8 @@
-(setq evil-want-integration nil)
 (require-package 'evil)
 (require-package 'evil-collection)
+(setq evil-want-integration nil)
+;; Use C-u to scroll up instead of `universal-argument`
+(setq evil-want-C-u-scroll t)
 
 (after 'evil
 
