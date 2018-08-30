@@ -20,4 +20,7 @@
 (setq tab-width 4)
 (xterm-mouse-mode t)
 
+;; Auto revert mode
+(global-auto-revert-mode t)
+
 (provide 'config-core)
