@@ -3,6 +3,8 @@
 (setq evil-want-integration nil)
 ;; Use C-u to scroll up instead of `universal-argument`
 (setq evil-want-C-u-scroll t)
+;; Use evil-search instead of isearch
+(setq evil-search-module 'evil-search)
 
 (after 'evil
 
