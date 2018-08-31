@@ -19,12 +19,6 @@
   ;; Do not use clipboard when normal cut
   ;; (setq select-enable-clipboard nil)
 
-  ;; Fix tab broken in `emacs -nw`
-  ;; See: http://tinyurl.com/yc926xmo
-  (add-hook 'org-mode-hook                                                                      
-            (lambda ()                                                                          
-              (define-key evil-normal-state-map (kbd "TAB") 'org-cycle))) 
-
   ;; Fix search word
   ;; See: https://emacs-china.org/t/evil-search-word-forward--/3340
   (defun evil-ex-search-symbol-backward ()
