@@ -23,4 +23,14 @@
 ;; Auto revert mode
 (global-auto-revert-mode t)
 
+;; Setup Backups
+(setq backup-by-copying t
+      ;; Why this line do not work?
+      ;; backup-directory-alist '(("." . (concat user-emacs-directory "backups")))
+      backup-directory-alist '(("." . "~/.emacs.d/backups"))
+      delete-old-versions t
+      kept-new-versions 16
+      kept-old-versions 16
+      version-control t)
+
 (provide 'config-core)
