@@ -61,6 +61,7 @@
                          (ido-find-file-in-dir org-directory)))
   (evil-global-set-key 'normal (kbd "\\oa") 'org-agenda-list)
   (evil-global-set-key 'normal (kbd "\\ob") 'org-switchb)
+  (evil-global-set-key 'normal (kbd "\\oc") 'org-capture)
   
   (evil-global-set-key 'normal (kbd "C-SPC") 'org-toggle-checkbox))
 

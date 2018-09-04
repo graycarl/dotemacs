@@ -1,20 +1,6 @@
 ;; Setup org mode, copy from Bling DotEmacs
 (require-package 'evil-org)
 (after 'org
-  (defgroup dotemacs-org nil
-    "Configuration options for org-mode."
-    :group 'dotemacs
-    :prefix 'dotemacs-org)
-
-  (defcustom dotemacs-org/journal-file (concat org-directory "/journal.org")
-    "The path to the file where you want to make journal entries."
-    :type 'file
-    :group 'dotemacs-org)
-
-  (defcustom dotemacs-org/inbox-file (concat org-directory "/inbox.org")
-    "The path to the file where to capture notes."
-    :type 'file
-    :group 'dotemacs-org)
 
   (setq org-log-done t)
   (setq org-log-into-drawer t)
@@ -25,14 +11,13 @@
   (setq org-agenda-files `(,org-directory))
 
   ;; Need to be fixed
+  (setq org-default-notes-file (concat org-directory "/inbox.org"))
   (setq org-capture-templates
-        '(("t" "Todo" entry (file+headline (expand-file-name dotemacs-org/inbox-file) "INBOX")
+        '(("t" "Todo" entry (file+headline "" "TASKS")
            "* TODO %?\n%U\n%a\n")
-          ("n" "Note" entry (file+headline (expand-file-name dotemacs-org/inbox-file) "NOTES")
+          ("n" "Note" entry (file+headline "" "NOTES")
            "* %? :NOTE:\n%U\n%a\n")
-          ("m" "Meeting" entry (file (expand-file-name dotemacs-org/inbox-file))
-           "* MEETING %? :MEETING:\n%U")
-          ("j" "Journal" entry (file+datetree (expand-file-name dotemacs-org/journal-file))
+          ("j" "Journal" entry (file+datetree "" "Journals")
            "* %U\n** %?")))
 
   ;; Evil org

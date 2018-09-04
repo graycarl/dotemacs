@@ -33,4 +33,7 @@
       kept-old-versions 16
       version-control t)
 
+;; Turn on recentf-mode
+(recentf-mode 1)
+
 (provide 'config-core)
