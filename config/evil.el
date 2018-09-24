@@ -1,6 +1,7 @@
 (require-package 'evil)
 (require-package 'evil-collection)
-(setq evil-want-integration nil)
+(setq evil-want-integration t)
+(setq evil-want-keybinding nil)
 ;; Use C-u to scroll up instead of `universal-argument`
 (setq evil-want-C-u-scroll t)
 ;; Use evil-search instead of isearch
@@ -27,8 +28,14 @@
   (defun evil-ex-search-symbol-forward ()
     (interactive)
     (evil-ex-search-word-forward 1 t))
+  
+  ;; Ex commands
+  (evil-ex-define-cmd "focus" 'org-narrow-to-element)
+  (evil-ex-define-cmd "unfocus" 'widen)
+  
   (define-key evil-motion-state-map "#" #'evil-ex-search-symbol-backward)
   (define-key evil-motion-state-map "*" #'evil-ex-search-symbol-forward))
+
 
 (evil-mode t)
 (evil-collection-init)

@@ -72,4 +72,21 @@
                          (interactive)
                          (switch-to-buffer "*scratch*"))))
 
+(after 'evil
+  ;; FIXME: a better way to define same key in difference modes.
+  (add-hook 'org-mode-hook
+            (lambda ()
+              (evil-local-set-key 'normal (kbd "K")
+                                  'youdao-dictionary-search-at-point+)))
+  (add-hook 'Info-mode-hook
+            (lambda ()
+              (evil-local-set-key 'normal (kbd "K")
+                                  'youdao-dictionary-search-at-point+)
+              ;; FIXME: fix the hardcode.
+              (evil-local-set-key 'normal (kbd "h")
+                                  'evil-backward-char)
+              (evil-local-set-key 'normal (kbd "l")
+                                  'evil-forward-char)))
+  )
+
 (provide 'config-bindings)
