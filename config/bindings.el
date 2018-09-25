@@ -39,9 +39,10 @@
   (evil-global-set-key 'normal (kbd "C-p") 'projectile-find-file))
 
 ;; Key bindings for folding
+;; FIXME: set global key when package loaded is not reasonable.
 (after [evil hideshow]
   ;; Use space to toggle folding
-  (evil-global-set-key 'normal (kbd "SPC") 'hs-toggle-hiding-one-level)
+  (evil-global-set-key 'normal (kbd "TAB") 'hs-toggle-hiding-one-level)
   (evil-global-set-key 'normal (kbd "zA") 'evil-toggle-fold)
   (evil-global-set-key 'normal (kbd "za") 'hs-toggle-hiding-one-level))
   
@@ -54,28 +55,30 @@
 ;; Org mode
 ;; Most evil key bindings for org mode is done by evil-org-mode
 (after 'evil
-  ;; Quick open org file
-  (evil-global-set-key 'normal (kbd "\\oo")
-                       (lambda ()
-                         (interactive)
-                         (ido-find-file-in-dir org-directory)))
-  (evil-global-set-key 'normal (kbd "\\oa") 'org-agenda-list)
-  (evil-global-set-key 'normal (kbd "\\ob") 'org-switchb)
-  (evil-global-set-key 'normal (kbd "\\oc") 'org-capture)
-  
   (evil-global-set-key 'normal (kbd "C-SPC") 'org-toggle-checkbox))
-
-;; Quick open *scratch*
-(after 'evil
-  (evil-global-set-key 'normal (kbd "\\s")
-                       (lambda ()
-                         (interactive)
-                         (switch-to-buffer "*scratch*"))))
 
 ;; FIXME: fix the hardcode.
 (after 'evil
   (add-hook 'Info-mode-hook
             (lambda () (evil-local-set-key 'normal (kbd "h") 'evil-backward-char)
                        (evil-local-set-key 'normal (kbd "l") 'evil-forward-char))))
+
+;; The leader key
+(after 'evil
+  (defvar leader-map (make-sparse-keymap)
+    "Keymap for \"leader key\" shortcuts.")
+  (evil-define-key 'normal 'global (kbd "SPC") leader-map)
+  ;; Org mode
+  (define-key leader-map "oa" 'org-agenda-list)
+  (define-key leader-map "ob" 'org-switchb)
+  (define-key leader-map "oc" 'org-capture)
+  (define-key leader-map "oo"
+    (lambda () (interactive) (ido-find-file-in-dir org-directory)))
+  ;; Projectile
+  (define-key leader-map "p" 'projectile-command-map)
+  ;; Misc
+  (define-key leader-map "ss"
+    (lambda () (interactive) (switch-to-buffer "*scratch*")))
+  (define-key leader-map "f" 'toggle-frame-fullscreen))
 
 (provide 'config-bindings)

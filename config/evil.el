@@ -32,6 +32,9 @@
   ;; Ex commands
   (evil-ex-define-cmd "focus" 'org-narrow-to-element)
   (evil-ex-define-cmd "unfocus" 'widen)
+
+  ;; Search english dictionary
+  (setq evil-lookup-func (quote youdao-dictionary-search-at-point+))
   
   (define-key evil-motion-state-map "#" #'evil-ex-search-symbol-backward)
   (define-key evil-motion-state-map "*" #'evil-ex-search-symbol-forward))
