@@ -69,6 +69,7 @@
     "Keymap for \"leader key\" shortcuts.")
   (evil-define-key 'normal 'global (kbd "SPC") leader-map)
   ;; Org mode
+  ;; FIXME: Bindings should valid only when in org mode
   (define-key leader-map "oa" 'org-agenda-list)
   (define-key leader-map "ob" 'org-switchb)
   (define-key leader-map "oc" 'org-capture)
