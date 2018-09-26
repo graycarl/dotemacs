@@ -8,6 +8,10 @@
   (setq org-indent-indentation-per-level 2)
   ;; (setq org-src-fontify-natively t)
 
+  ;; Force {} to use sub-superscripts
+  (setq org-export-with-sub-superscripts '{})
+  (setq org-use-sub-superscripts '{})
+
   (setq org-agenda-files `(,org-directory))
 
   ;; Need to be fixed

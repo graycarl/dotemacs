@@ -74,6 +74,7 @@
   (define-key leader-map "oc" 'org-capture)
   (define-key leader-map "oo"
     (lambda () (interactive) (ido-find-file-in-dir org-directory)))
+  (define-key leader-map "oe" 'org-export-dispatch)
   ;; Projectile
   (define-key leader-map "p" 'projectile-command-map)
   ;; Misc
