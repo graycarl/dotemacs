@@ -24,8 +24,9 @@
 ;; Evil
 ;; Most evil bindings are configured by evil-collection
 (after 'evil
-  ;; Toggle fullscreen mode
-  (evil-global-set-key 'normal (kbd "\\f") 'toggle-frame-fullscreen)
+  ;; Buffer switch
+  (evil-define-key 'normal 'global (kbd "_") 'previous-buffer)
+  (evil-define-key 'normal 'global (kbd "+") 'previous-buffer)
   ;; Do not work here
   ;; (evil-global-set-key 'normal (kbd "\\p")
   ;;                      (lambda ()
@@ -58,10 +59,12 @@
   (evil-global-set-key 'normal (kbd "C-SPC") 'org-toggle-checkbox))
 
 ;; FIXME: fix the hardcode.
+;; Why only Info-mode overwrite my bindings?
 (after 'evil
   (add-hook 'Info-mode-hook
             (lambda () (evil-local-set-key 'normal (kbd "h") 'evil-backward-char)
-                       (evil-local-set-key 'normal (kbd "l") 'evil-forward-char))))
+                       (evil-local-set-key 'normal (kbd "l") 'evil-forward-char)
+                       (evil-local-set-key 'normal (kbd "SPC") leader-map))))
 
 ;; The leader key
 (after 'evil
