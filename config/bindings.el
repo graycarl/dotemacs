@@ -81,6 +81,8 @@
   (define-key leader-map "oe" 'org-export-dispatch)
   ;; Projectile
   (define-key leader-map "p" 'projectile-command-map)
+  ;; VC
+  (define-key leader-map "v" 'vc-prefix-map)
   ;; Misc
   (define-key leader-map "ss"
     (lambda () (interactive) (switch-to-buffer "*scratch*")))
