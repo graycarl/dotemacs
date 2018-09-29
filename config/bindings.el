@@ -79,6 +79,7 @@
   (define-key leader-map "oo"
     (lambda () (interactive) (ido-find-file-in-dir org-directory)))
   (define-key leader-map "oe" 'org-export-dispatch)
+  (define-key leader-map "os" 'org-save-all-org-buffers)
   ;; Projectile
   (define-key leader-map "p" 'projectile-command-map)
   ;; VC
