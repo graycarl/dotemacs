@@ -14,14 +14,17 @@
 
   (setq org-agenda-files `(,org-directory))
 
-  ;; Need to be fixed
   (setq org-default-notes-file (concat org-directory "/inbox.org"))
   (setq org-capture-templates
-        '(("t" "Todo" entry (file+headline "" "TASKS")
-           "* TODO %?\n%U\n%a\n")
-          ("n" "Note" entry (file+headline "" "NOTES")
-           "* %? :NOTE:\n%U\n%a\n")
-          ("j" "Journal" entry (file+datetree "" "Journals")
+        '(("t" "Todo" entry (file+headline "inbox.org" "TASKS")
+           "* TODO %?\nSCHEDULED: %^t\nCAPTURED: %U\n")
+          ("j" "JIRA" entry (file+regexp "work.org" "Sprint.*Current")
+           (concat "* TODO %?\nSCHEDULED: %^t\nCAPTURED: %U\n"
+                   "- [ ] Coding\n"
+                   "- [ ] Review\n"
+                   "- [ ] Testing\n"
+                   "- [ ] Close JIRA"))
+          ("d" "Journal" entry (file+datetree "life.org" "Journals")
            "* %U\n** %?")))
 
   ;; Evil org
