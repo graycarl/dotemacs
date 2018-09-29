@@ -26,7 +26,7 @@
 (after 'evil
   ;; Buffer switch
   (evil-define-key 'normal 'global (kbd "_") 'previous-buffer)
-  (evil-define-key 'normal 'global (kbd "+") 'previous-buffer)
+  (evil-define-key 'normal 'global (kbd "+") 'next-buffer)
   ;; Do not work here
   ;; (evil-global-set-key 'normal (kbd "\\p")
   ;;                      (lambda ()
