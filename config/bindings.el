@@ -89,4 +89,10 @@
     (lambda () (interactive) (switch-to-buffer "*scratch*")))
   (define-key leader-map "f" 'toggle-frame-fullscreen))
 
+;; Evil Collection
+(after 'evil-collection
+  (evil-collection-define-key 'normal 'grep-mode-map
+    ;; Bind r to refresh search result
+    "r" 'recompile))
+
 (provide 'config-bindings)
