@@ -58,14 +58,6 @@
 (after 'evil
   (evil-global-set-key 'normal (kbd "C-SPC") 'org-toggle-checkbox))
 
-;; FIXME: fix the hardcode.
-;; Why only Info-mode overwrite my bindings?
-(after 'evil
-  (add-hook 'Info-mode-hook
-            (lambda () (evil-local-set-key 'normal (kbd "h") 'evil-backward-char)
-                       (evil-local-set-key 'normal (kbd "l") 'evil-forward-char)
-                       (evil-local-set-key 'normal (kbd "SPC") leader-map))))
-
 ;; The leader key
 (after 'evil
   (defvar leader-map (make-sparse-keymap)
@@ -93,6 +85,12 @@
 (after 'evil-collection
   (evil-collection-define-key 'normal 'grep-mode-map
     ;; Bind r to refresh search result
-    "r" 'recompile))
+    "r" 'recompile)
+  (evil-collection-define-key 'normal 'Info-mode-map
+    ;; FIXME: fix the hardcode.
+    "h" 'evil-backward-char
+    "l" 'evil-forward-char
+    (kbd "SPC") leader-map)
+  )
 
 (provide 'config-bindings)
