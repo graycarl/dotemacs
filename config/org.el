@@ -19,11 +19,7 @@
         '(("t" "Todo" entry (file+headline "inbox.org" "TASKS")
            "* TODO %?\nSCHEDULED: %^t\nCAPTURED: %U\n")
           ("j" "JIRA" entry (file+regexp "work.org" "Sprint.*Current")
-           (concat "* TODO %?\nSCHEDULED: %^t\nCAPTURED: %U\n"
-                   "- [ ] Coding\n"
-                   "- [ ] Review\n"
-                   "- [ ] Testing\n"
-                   "- [ ] Close JIRA"))
+           "* TODO %?\nSCHEDULED: %^t\nCAPTURED: %U\n- [ ] Coding\n- [ ] Review\n- [ ] Testing\n- [ ] Close JIRA")
           ("d" "Journal" entry (file+datetree "life.org" "Journals")
            "* %U\n** %?")))
 
