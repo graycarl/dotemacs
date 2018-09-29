@@ -1,5 +1,5 @@
 (require-package 'virtualenvwrapper)
-(setq-default mode-line-format (cons '(:exec venv-current-name) mode-line-format))
+(setq-default mode-line-format (cons mode-line-format '(:exec venv-current-name)))
 
 (require-package 'anaconda-mode)
 (add-hook 'python-mode-hook 'anaconda-mode)
