@@ -29,10 +29,6 @@
     (interactive)
     (evil-ex-search-word-forward 1 t))
   
-  ;; Ex commands
-  (evil-ex-define-cmd "focus" 'org-narrow-to-element)
-  (evil-ex-define-cmd "unfocus" 'widen)
-
   ;; Search english dictionary
   (setq evil-lookup-func (quote youdao-dictionary-search-at-point+))
   

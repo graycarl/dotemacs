@@ -24,6 +24,17 @@
 ;; Evil
 ;; Most evil bindings are configured by evil-collection
 (after 'evil
+  ;; Buffer switch
+  (evil-define-key 'normal 'global (kbd "_") 'ns-prev-frame)
+  (evil-define-key 'normal 'global (kbd "+") 'ns-next-frame)
+  (evil-ex-define-cmd "tabnew" 'make-frame)
+  (evil-ex-define-cmd "tabnext" 'ns-next-frame)
+  (evil-ex-define-cmd "tabprev" 'ns-prev-frame)
+  (evil-ex-define-cmd "tabclose" 'delete-frame)
+  ;; focus
+  (evil-ex-define-cmd "focus" 'org-narrow-to-element)
+  (evil-ex-define-cmd "unfocus" 'widen)
+
   ;; Do not work here
   ;; (evil-global-set-key 'normal (kbd "\\p")
   ;;                      (lambda ()
