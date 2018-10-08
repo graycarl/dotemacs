@@ -24,9 +24,6 @@
 ;; Evil
 ;; Most evil bindings are configured by evil-collection
 (after 'evil
-  ;; Buffer switch
-  (evil-define-key 'normal 'global (kbd "_") 'previous-buffer)
-  (evil-define-key 'normal 'global (kbd "+") 'next-buffer)
   ;; Do not work here
   ;; (evil-global-set-key 'normal (kbd "\\p")
   ;;                      (lambda ()
@@ -63,6 +60,7 @@
   (defvar leader-map (make-sparse-keymap)
     "Keymap for \"leader key\" shortcuts.")
   (evil-define-key 'normal 'global (kbd "SPC") leader-map)
+  (evil-define-key 'normal 'global (kbd "\\") leader-map)
   ;; Org mode
   ;; FIXME: Bindings should valid only when in org mode
   (define-key leader-map "oa" 'org-agenda-list)
@@ -89,8 +87,7 @@
   (evil-collection-define-key 'normal 'Info-mode-map
     ;; FIXME: fix the hardcode.
     "h" 'evil-backward-char
-    "l" 'evil-forward-char
-    (kbd "SPC") leader-map)
+    "l" 'evil-forward-char)
   )
 
 (provide 'config-bindings)
