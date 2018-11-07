@@ -99,6 +99,10 @@
     ;; FIXME: fix the hardcode.
     "h" 'evil-backward-char
     "l" 'evil-forward-char)
+  (evil-collection-define-key 'visual 'Info-mode-map
+    ;; FIXME: fix the hardcode.
+    "h" 'evil-backward-char
+    "l" 'evil-forward-char)
   )
 
 (provide 'config-bindings)
