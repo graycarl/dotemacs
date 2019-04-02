@@ -3,3 +3,6 @@
 (setq projectile-use-git-grep t)
 (projectile-mode +1)
 (provide 'config-projectile)
+
+;; https://github.com/bbatsov/projectile/issues/1382
+(require 'subr-x)

@@ -66,4 +66,11 @@ FEATURE may be any one of:
         try-complete-lisp-symbol-partially
         try-complete-lisp-symbol))
 
+;; Force quit
+(defun really-kill-emacs ()
+  "Like `kill-emacs', but ignores `kill-emacs-hook'."
+  (interactive)
+  (let (kill-emacs-hook)
+    (kill-emacs)))
+
 (provide 'dotemacs-lib)

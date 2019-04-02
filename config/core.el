@@ -25,9 +25,7 @@
 
 ;; Setup Backups
 (setq backup-by-copying t
-      ;; Why this line do not work?
-      ;; backup-directory-alist '(("." . (concat user-emacs-directory "backups")))
-      backup-directory-alist '(("." . "~/.emacs.d/backups"))
+      backup-directory-alist `(("." . ,(concat user-emacs-directory "backups")))
       delete-old-versions t
       kept-new-versions 16
       kept-old-versions 16
